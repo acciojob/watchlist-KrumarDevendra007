@@ -9,17 +9,17 @@ public class Movie {
     public Movie(){
     }
 
+    public Movie(String name,  int durationInMinutes, double imdbRating) {
+        this.name = name;
+        this.imdbRating = imdbRating;
+        this.durationInMinutes = durationInMinutes;
+    }
+
     public int getDurationInMinutes() {
         return durationInMinutes;
     }
 
     public void setDurationInMinutes(int durationInMinutes) {
-        this.durationInMinutes = durationInMinutes;
-    }
-
-    public Movie(String name, double imdbRating, int durationInMinutes) {
-        this.name = name;
-        this.imdbRating = imdbRating;
         this.durationInMinutes = durationInMinutes;
     }
 
