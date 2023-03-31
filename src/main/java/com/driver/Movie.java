@@ -3,7 +3,6 @@ package com.driver;
 public class Movie {
 
     private String name;
-    private int numberOfMovies;
     private  int durationInMinutes;
     private double imdbRating;
 
@@ -18,9 +17,8 @@ public class Movie {
         this.durationInMinutes = durationInMinutes;
     }
 
-    public Movie(String name, int numberOfMovies, double imdbRating, int durationInMinutes) {
+    public Movie(String name, double imdbRating, int durationInMinutes) {
         this.name = name;
-        this.numberOfMovies = numberOfMovies;
         this.imdbRating = imdbRating;
         this.durationInMinutes = durationInMinutes;
     }
@@ -32,15 +30,6 @@ public class Movie {
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getNumberOfMovies() {
-        return numberOfMovies;
-    }
-
-    public void setNumberOfMovies(int numberOfMovies) {
-        this.numberOfMovies = numberOfMovies;
-    }
-
     public double getImdbRating() {
         return imdbRating;
     }
