@@ -35,6 +35,11 @@ public class MovieService {
         return director;
    }
 
+   public List<String> findAllMovies(){
+        List<String> list = movieRepository.findAllMovies();
+        return list;
+   }
+
    public List<String> getMoviesByDirectorName(String directorName){
 
         List<String> movieList = movieRepository.getMoviesByDirectorName(directorName);

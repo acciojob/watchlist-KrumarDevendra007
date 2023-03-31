@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
 @RestController
 @RequestMapping("movies")
@@ -45,6 +46,13 @@ public class MovieController {
         Director director = movieService.getDirectorByName(directorName);
 
         return new ResponseEntity<>(director, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/get-all-movies")
+    public ResponseEntity<List<String>> findAllMovies(){
+          List<String> movieList = movieService.findAllMovies();
+
+          return new ResponseEntity<>(movieList, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete-director-by-name")

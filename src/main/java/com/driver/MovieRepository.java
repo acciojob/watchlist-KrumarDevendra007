@@ -20,21 +20,23 @@ public class MovieRepository {
 
     public void addDirector(Director director){
 
-        String key = director.getDirectorName();
+        String key = director.getName();
         directorDb.put(key, director);
     }
 
-    public void addMovieDirectorPair(String director, String movie){
-
-        List<String> list =  movieDirectorDb.get(director);
-
-        if(list == null){
-            list = new ArrayList<>();
+    public void addMovieDirectorPair(String movieName, String directorName){
+         if(movieDirectorDb.containsKey(directorName)){
+             List<String> list = movieDirectorDb.get(directorName);
+             list.add(movieName);
+             movieDirectorDb.put(directorName, list);
         }
 
-        list.add(movie);
+        else{
+            List<String> list = new ArrayList<>();
+            list.add(movieName);
+            movieDirectorDb.put(directorName, list);
+        }
 
-        movieDirectorDb.put(movie, list);
     }
     public Movie getMovieByName(String movieName){
 
@@ -46,6 +48,16 @@ public class MovieRepository {
         return directorDb.get(directorName);
     }
 
+   public List<String> findAllMovies(){
+        List<String> list = new ArrayList<>();
+
+        for(String str : movieDb.keySet()){
+            list.add(str);
+        }
+
+        return list;
+   }
+
     public List<String> getMoviesByDirectorName(String directorName){
 
          List<String> movieList = movieDirectorDb.get(directorName);
@@ -55,19 +67,20 @@ public class MovieRepository {
 
     public void deleteDirectorByName(String directorName){
 
-        for(String str : movieDirectorDb.get(directorName)){
-            movieDb.remove(directorName);
+        List<String> movies = movieDirectorDb.get(directorName);
+        for(String movie : movies){
+            movieDb.remove(movie);
         }
-
+        movieDirectorDb.remove(directorName);
         directorDb.remove(directorName);
-        movieDb.remove(directorName);
     }
 
     public void deleteAllDirectors(){
 
         for(String director : directorDb.keySet()){
 
-            for(String str : movieDirectorDb.get(director)){
+            List<String> movie = movieDirectorDb.get(director);
+            for(String str : movie){
 
                 movieDb.remove(str);
             }

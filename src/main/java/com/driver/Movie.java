@@ -7,7 +7,6 @@ public class Movie {
     private double imdbRating;
 
     public Movie(){
-
     }
 
     public Movie(String name, int numberOfMovies, double imdbRating) {
