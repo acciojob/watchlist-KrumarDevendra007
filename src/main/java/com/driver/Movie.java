@@ -4,15 +4,25 @@ public class Movie {
 
     private String name;
     private int numberOfMovies;
+    private  int durationInMinutes;
     private double imdbRating;
 
     public Movie(){
     }
 
-    public Movie(String name, int numberOfMovies, double imdbRating) {
+    public int getDurationInMinutes() {
+        return durationInMinutes;
+    }
+
+    public void setDurationInMinutes(int durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
+    }
+
+    public Movie(String name, int numberOfMovies, double imdbRating, int durationInMinutes) {
         this.name = name;
         this.numberOfMovies = numberOfMovies;
         this.imdbRating = imdbRating;
+        this.durationInMinutes = durationInMinutes;
     }
 
     public String getName() {
