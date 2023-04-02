@@ -48,9 +48,7 @@ public class MovieRepository {
         return directorDb.get(directorName);
     }
 
-
-
-   public List<String> findAllMovies(){
+    public List<String> findAllMovies(){
         List<String> list = new ArrayList<>();
 
         for(String str : movieDb.keySet()){
