@@ -12,19 +12,23 @@ public class MovieRepository {
 
     HashMap<String, List<String>>  movieDirectorDb = new HashMap<>();
 
-    public void addMovie(Movie movie){
+    public String addMovie(Movie movie){
 
         String key = movie.getName();
         movieDb.put(key, movie);
+
+        return "New movie added successfully";
     }
 
-    public void addDirector(Director director){
+    public String addDirector(Director director){
 
         String key = director.getName();
         directorDb.put(key, director);
+
+        return "New director added successfully";
     }
 
-    public void addMovieDirectorPair(String movieName, String directorName){
+    public String addMovieDirectorPair(String movieName, String directorName){
          if(movieDirectorDb.containsKey(directorName)){
              List<String> list = movieDirectorDb.get(directorName);
              list.add(movieName);
@@ -36,6 +40,8 @@ public class MovieRepository {
             list.add(movieName);
             movieDirectorDb.put(directorName, list);
         }
+
+        return "New director movie pair added successfully";
 
     }
     public Movie getMovieByName(String movieName){
@@ -65,7 +71,7 @@ public class MovieRepository {
          return movieList;
     }
 
-    public void deleteDirectorByName(String directorName){
+    public String deleteDirectorByName(String directorName){
 
         List<String> movies = movieDirectorDb.get(directorName);
         for(String movie : movies){
@@ -73,9 +79,11 @@ public class MovieRepository {
         }
         movieDirectorDb.remove(directorName);
         directorDb.remove(directorName);
+
+        return "Director remove successfully";
     }
 
-    public void deleteAllDirectors(){
+    public String deleteAllDirectors(){
 
         for(String director : directorDb.keySet()){
 
@@ -88,5 +96,7 @@ public class MovieRepository {
             movieDirectorDb.remove(director);
             directorDb.remove(director);
         }
+
+        return "All directors remove successfully";
     }
 }
